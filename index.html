@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#142033">
+<title>The Barn Kennel Farm POS</title>
+<style>
+:root{--ink:#172033;--muted:#657187;--line:#dfe5ee;--bg:#f3f5f9;--blue:#2459d3;--green:#167a55;--amber:#fff4d9}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{background:#142033;color:white;padding:calc(20px + env(safe-area-inset-top)) 17px 18px}header small{color:#b7c4d8;letter-spacing:.12em;font-weight:800;font-size:10px}h1{margin:3px 0;font-size:27px}header p{margin:4px 0 0;color:#d1d9e6;font-size:12px}
+main{max-width:760px;margin:auto;padding:13px}.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:16px;margin-bottom:13px;box-shadow:0 4px 15px #17203308}.topline{display:flex;align-items:center;justify-content:space-between;gap:10px}h2{font-size:20px;margin:2px 0 9px}h3{font-size:15px;margin:5px 0}.eyebrow{font-size:10px;font-weight:800;letter-spacing:.12em;color:var(--muted);margin:0 0 5px}.muted{color:var(--muted)}.tiny{font-size:12px}.btn{border:0;border-radius:11px;padding:12px 14px;background:#edf1f7;color:#25334a;font-weight:750;font-size:14px;min-height:43px;cursor:pointer}.btn.primary{background:var(--blue);color:white}.btn.green{background:var(--green);color:white}.btn.danger{background:#fff0f0;color:#9a2424}.btn:disabled{opacity:.45}.full{width:100%}.row{display:flex;gap:8px;align-items:center}.row>*{min-width:0}.row .grow{flex:1}.input,select{width:100%;padding:12px;border:1px solid #cbd4e1;border-radius:10px;font-size:16px;background:white;color:var(--ink);min-height:44px}.field{margin:9px 0}.field label{display:block;font-size:12px;font-weight:700;color:#4b5870;margin-bottom:5px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.product{border:1px solid var(--line);border-radius:12px;background:white;padding:12px;text-align:left;min-height:87px;color:var(--ink)}.product strong{display:block;font-size:14px;margin:4px 0}.product span{font-size:11px;color:var(--muted)}.product b{font-size:14px}.basketline{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:12px 0;border-bottom:1px solid var(--line)}.basketline:last-child{border-bottom:0}.itemname{font-weight:750;font-size:14px}.sub{font-size:12px;color:var(--muted);margin-top:3px}.qtytools{display:flex;align-items:center;gap:6px}.qtytools button{width:30px;height:30px;padding:0;border-radius:8px}.linecost{text-align:right;font-weight:800;font-size:13px;margin-top:4px}.total{display:flex;justify-content:space-between;align-items:center;gap:8px;border-top:1px solid var(--line);padding-top:14px;margin-top:8px}.total span{font-size:13px;color:var(--muted)}.total strong{font-size:29px;font-variant-numeric:tabular-nums}.warning{background:var(--amber);border-radius:11px;padding:11px;font-size:12px;color:#76551b}.hidden{display:none!important}.modalback{position:fixed;inset:0;background:#0b1426b8;display:flex;align-items:center;justify-content:center;padding:20px;z-index:1000}.modal{background:white;color:var(--ink);border-radius:18px;padding:22px;width:min(100%,390px);box-shadow:0 20px 60px #0004}.modalprice{font-size:34px;font-weight:850;margin:5px 0 14px}.saleitem{padding:10px 0;border-bottom:1px solid var(--line)}.statgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.stat{background:#f3f6fb;border-radius:11px;padding:10px}.stat small{display:block;color:var(--muted);font-size:10px}.stat strong{font-size:16px;display:block;margin-top:3px;font-variant-numeric:tabular-nums}#reader{width:100%;overflow:hidden;border-radius:12px}#reader video{border-radius:12px}.status{font-size:12px;color:var(--muted);margin:8px 0 0;min-height:17px}.chip{font-size:11px;background:#eef2f8;padding:5px 8px;border-radius:99px;white-space:nowrap}.divider{height:1px;background:var(--line);margin:13px 0}.subsection{border:1px solid var(--line);border-radius:13px;margin:12px 0;overflow:hidden;background:#fbfcfe}.subsection>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px;background:#f5f7fb;font-weight:800;cursor:pointer}.subsection>summary::-webkit-details-marker{display:none}.subsection>summary:after{content:"＋";font-size:18px;color:var(--muted)}.subsection[open]>summary:after{content:"−"}.subsection-body{padding:12px}.section-hint{font-size:12px;color:var(--muted);margin:4px 0 10px}.label-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.qrlabel{border:1px dashed #b9c3d2;border-radius:10px;padding:10px;text-align:center;break-inside:avoid}.qrlabel canvas,.qrlabel img{max-width:100%;height:auto}.qrlabel strong{display:block;font-size:13px;margin-top:4px}.qrlabel small{font-size:11px;color:var(--muted)}footer{text-align:center;color:var(--muted);font-size:11px;padding:10px 18px 30px}
+@media(min-width:560px){main{padding:22px}.card{padding:20px}.grid,.label-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media print{header,main>*:not(#labelsCard),#labelsCard .no-print,footer{display:none!important}body{background:white}main{padding:0}.card{border:0;box-shadow:none;padding:0}.label-grid{grid-template-columns:repeat(3,1fr)}.qrlabel{border:1px solid #aaa;margin:4px}}
+</style>
+</head>
+<body>
+<header><small>PHONE CHECKOUT</small><h1>The Barn Kennel Farm POS</h1><p>Scan products · build a basket · enter total in SumUp Air</p></header>
+<section id="loginPanel" class="card" style="max-width:460px;margin:18px auto;padding:20px">
+ <p class="eyebrow">OPERATOR ACCESS</p><h2>Unlock the till</h2>
+ <p class="muted tiny">Enter the shared operator PIN to access The Barn Kennel Farm product catalogue and sales records.</p>
+ <div class="field"><label for="pinInput">Shared PIN</label><input id="pinInput" class="input" type="password" inputmode="numeric" autocomplete="current-password" placeholder="Enter shared PIN"></div>
+ <button id="loginButton" class="btn primary full">Unlock POS</button><p id="loginStatus" class="status" role="status"></p>
+</section>
+<main id="appMain" class="hidden">
+<section class="card">
+ <div class="topline"><div><p class="eyebrow">STEP 1</p><h2>Scan a product QR</h2></div><span class="chip">Camera scanner</span></div>
+ <p class="muted tiny">Allow camera access when Safari asks. QR codes should contain a product ID, such as <b>DRK001</b>, or a link ending in <b>?product=DRK001</b>.</p>
+ <button id="startScan" class="btn primary full">Start camera scanner</button>
+ <div id="scannerWrap" class="hidden" style="margin-top:12px"><div id="reader"></div><button id="stopScan" class="btn full" style="margin-top:8px">Stop scanner</button></div>
+ <p id="scanStatus" class="status" aria-live="polite">Camera is off.</p>
+ <div class="divider"></div>
+ <div class="field"><label for="manualCode">Or enter / paste a product ID</label><div class="row"><input id="manualCode" class="input grow" placeholder="e.g. DRK001" autocomplete="off"><button id="addCode" class="btn">Add</button></div></div>
+ <div id="scanResult" class="status" aria-live="polite"></div>
+</section>
+
+<div id="confirmModal" class="modalback hidden" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+ <div class="modal">
+  <p class="eyebrow">CONFIRM SCANNED PRODUCT</p><h2 id="confirmTitle">Is this the correct item?</h2>
+  <div id="confirmName" style="font-size:20px;font-weight:800;margin-top:12px"></div>
+  <div id="confirmId" class="muted tiny"></div>
+  <div id="confirmPrice" class="modalprice">£0.00</div>
+  <p class="muted tiny">Only tap Confirm if the item and price are correct.</p>
+  <div class="row" style="margin-top:18px"><button id="cancelScanProduct" class="btn danger grow">Cancel</button><button id="confirmScanProduct" class="btn green grow">Confirm item</button></div>
+ </div>
+</div>
+
+<section class="card">
+ <div class="topline"><div><p class="eyebrow">STEP 2</p><h2>Current basket</h2></div><button id="clearBasket" class="btn">Clear</button></div>
+ <div id="emptyBasket" class="muted tiny" style="padding:12px 0">No items yet. Scan a product QR code above.</div>
+ <div id="basket"></div>
+ <div class="total"><span>Total to enter in SumUp</span><strong id="total">£0.00</strong></div>
+ <button id="copyTotal" class="btn primary full" style="margin-top:12px" disabled>Copy total for SumUp</button>
+ <p id="copyStatus" class="status" aria-live="polite"></p>
+ <button id="markPaid" class="btn green full hidden" style="margin-top:8px">SumUp payment successful · Mark paid & start next order</button>
+ <p class="tiny muted">Copying the total saves an order as awaiting payment. After SumUp confirms payment, tap the green button to record the sale and clear the basket.</p>
+</section>
+
+<section class="card">
+ <div class="topline"><div><p class="eyebrow">SALES RECORDS</p><h2>Daily / monthly / yearly totals</h2></div><span class="chip">Paid orders</span></div>
+ <div class="statgrid">
+  <div class="stat"><small>Today</small><strong id="salesToday">£0.00</strong></div>
+  <div class="stat"><small>This month</small><strong id="salesMonth">£0.00</strong></div>
+  <div class="stat"><small>This year</small><strong id="salesYear">£0.00</strong></div>
+ </div>
+ <p class="tiny muted" style="margin-top:10px">Estimated profit on paid sales: <b id="salesProfit">£0.00</b> (selling totals less saved purchase costs).</p>
+ <p class="muted tiny" style="margin-top:10px">Sales totals include only orders marked paid. Export shared paid orders and item details as a CSV spreadsheet for Excel, Numbers or Google Sheets.</p>
+ <button id="exportSales" class="btn primary full">Export sales spreadsheet (CSV)</button>
+ <p id="salesStatus" class="status" aria-live="polite"></p>
+ <details class="subsection" id="recentSalesSection">
+  <summary><span>Recent sales and orders</span><span class="chip">Latest 12</span></summary>
+  <div class="subsection-body"><p class="section-hint">Review recent payment status, sale totals and items.</p><div id="salesHistory" class="tiny muted">No orders recorded yet.</div></div>
+ </details>
+</section>
+
+<section class="card">
+ <p class="eyebrow">STEP 3</p><h2>Product catalogue</h2>
+ <p class="muted tiny">Add products here or import a CSV for 50+ items. Prices are in pounds, e.g. <b>1.50</b>. Product IDs must be unique.</p>
+ <div class="field"><label for="search">Search catalogue</label><input id="search" class="input" placeholder="Search by name or ID"></div>
+ <div id="productGrid" class="grid"></div>
+ <p id="catalogCount" class="status"></p>
+ <details class="subsection" id="inventorySection">
+  <summary><span>Inventory management</span><span class="chip">Stock &amp; costs</span></summary>
+  <div class="subsection-body">
+   <h3>Inventory overview</h3>
+   <div class="statgrid">
+    <div class="stat"><small>Active products</small><strong id="inventoryProducts">0</strong></div>
+    <div class="stat"><small>Units in stock</small><strong id="inventoryUnits">0</strong></div>
+    <div class="stat"><small>Stock value (cost)</small><strong id="inventoryValue">£0.00</strong></div>
+   </div>
+   <p class="tiny muted">Stock value uses purchase cost × current quantity. Low-stock products are highlighted below.</p>
+   <div id="inventoryList"></div>
+   <details style="margin-top:10px"><summary style="font-weight:750;padding:8px 0;cursor:pointer">Archived products</summary><p class="section-hint">Restore an archived product, or permanently remove it from product-level profit reports and CSV exports.</p><div id="archivedList"></div></details>
+  </div>
+ </details>
+ <details class="subsection" id="addProductSection">
+  <summary><span>Add or edit a product</span><span class="chip">Manual entry</span></summary>
+  <div class="subsection-body">
+  <div class="field"><label for="newId">Product ID (used in QR code)</label><input id="newId" class="input" placeholder="e.g. DRK001"></div>
+  <div class="field"><label for="newName">Product name</label><input id="newName" class="input" placeholder="e.g. Coca-Cola 330ml"></div>
+  <div class="field"><label for="newPrice">Selling price (£)</label><input id="newPrice" class="input" inputmode="decimal" placeholder="1.50"></div>
+  <div class="field"><label for="newCost">Purchase cost per unit (£)</label><input id="newCost" class="input" inputmode="decimal" placeholder="0.60"></div>
+  <div class="field"><label for="newStock">Current stock quantity</label><input id="newStock" class="input" inputmode="numeric" type="number" min="0" step="1" placeholder="0"></div>
+  <div class="field"><label for="newLowStock">Low-stock warning at quantity</label><input id="newLowStock" class="input" inputmode="numeric" type="number" min="0" step="1" value="5"></div>
+  <input id="editingProductId" type="hidden">
+  <div class="row"><button id="saveProduct" class="btn green grow">Save product</button><button id="cancelEditProduct" class="btn hidden">Cancel edit</button></div>
+  </div>
+ </details>
+ <details class="subsection" id="importProductsSection">
+  <summary><span>Import products from CSV</span><span class="chip">Bulk update</span></summary>
+  <div class="subsection-body">
+ <div class="field"><label for="csvFile">Choose CSV file</label><input id="csvFile" class="input" type="file" accept=".csv,text/csv"></div>
+ <p class="tiny muted">CSV columns: <b>id,name,price,cost_price,stock_quantity,low_stock_threshold</b>. The first three columns are required. Import updates listed products and archives products omitted from the CSV.</p>
+ <button id="downloadTemplate" class="btn full">Download CSV template</button>
+  </div>
+ </details>
+</section>
+
+<section class="card">
+ <p class="eyebrow">OPTIONAL</p><h2>Generate QR labels</h2>
+ <p class="muted tiny">Creates printable QR labels containing each product ID. Scan these with this app's scanner. You can print the page or save QR images if your browser supports it.</p>
+ <button id="makeLabels" class="btn full">Generate labels for catalogue</button>
+ <div id="labelsCard" class="hidden" style="margin-top:12px"><div class="no-print row"><button id="printLabels" class="btn primary grow">Print / Save labels</button><button id="hideLabels" class="btn">Hide</button></div><div id="labels" class="label-grid" style="margin-top:12px"></div></div>
+</section>
+
+<section class="card">
+ <p class="eyebrow">STEP 4</p><h2>Take payment in SumUp</h2>
+ <ol class="muted tiny" style="padding-left:20px"><li>Check the total above and tap “Copy total for SumUp”.</li><li>Open SumUp and enter the amount in checkout.</li><li>Charge the customer with your paired SumUp Air reader.</li><li>Only clear the basket after SumUp confirms payment.</li></ol>
+ <p class="warning"><b>Important:</b> This web app only manages products and totals. It does not connect to the SumUp Air, initiate payments or verify payment success. You enter the amount manually in SumUp.</p>
+</section>
+</main><footer>QuickScan POS · Shared online catalogue and sales records · The Barn Kennel Farm</footer>
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(()=> {
+  const $=id=>document.getElementById(id);
+  const SUPABASE_URL='https://qmaaupcsvrhauzrbfrqo.supabase.co';
+  const SUPABASE_PUBLISHABLE_KEY='sb_publishable_z-R5UVB5NoPMAmvoNVzH_Q_8MZECMsu';
+  const API_URL=SUPABASE_URL+'/functions/v1/swift-endpoint';
+  let token='', products=[], basket={}, sales=[], activeOrderId=null, activeSignature='', pendingProduct=null, scanner=null, lastScan='', lastScanAt=0;
+  const money=n=>new Intl.NumberFormat('en-GB',{style:'currency',currency:'GBP'}).format(Number(n)||0);
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  async function api(action,data={}) {
+    const headers={'Content-Type':'application/json','apikey':SUPABASE_PUBLISHABLE_KEY};
+    if(token) headers.Authorization='Bearer '+token;
+    const res=await fetch(API_URL,{method:'POST',headers,body:JSON.stringify({action,...data})});
+    let result={}; try{result=await res.json()}catch{}
+    if(!res.ok) throw new Error(result.error||('Request failed ('+res.status+')'));
+    return result;
+  }
+  function setLoginMessage(s){$('loginStatus').textContent=s}
+  async function login(){
+    const pin=$('pinInput').value;
+    if(!pin){setLoginMessage('Enter the shared PIN.');return}
+    $('loginButton').disabled=true;setLoginMessage('Checking PIN…');
+    try{const result=await api('login',{pin});token=result.token;await refreshAll();$('pinInput').value='';$('loginPanel').classList.add('hidden');$('appMain').classList.remove('hidden');setLoginMessage('');}
+    catch(e){token='';setLoginMessage(e.message==='Incorrect PIN'?'Incorrect PIN. Try again.':'Could not connect: '+e.message)}
+    finally{$('loginButton').disabled=false}
+  }
+  $('loginButton').onclick=login;
+  $('pinInput').addEventListener('keydown',e=>{if(e.key==='Enter')login()});
+  function basketItems(){return products.filter(p=>(basket[p.id]||0)>0).map(p=>({id:p.id,name:p.name,qty:basket[p.id],unitPrice:Number(p.price),lineTotal:Math.round(Number(p.price)*basket[p.id]*100)/100}))}
+  function basketSignature(){return JSON.stringify(basketItems().map(i=>[i.id,i.qty,i.unitPrice]))}
+  async function cancelActiveIfNeeded(){if(!activeOrderId)return;const id=activeOrderId;activeOrderId=null;activeSignature='';try{await api('cancel_order',{order_id:id})}catch(e){console.warn('Could not cancel pending order:',e.message)}}
+  async function addByCode(raw){const code=productCode(raw);const p=products.find(x=>x.active&&x.id.toLowerCase()===code.toLowerCase());if(!p){$('scanResult').textContent='Product not found for code: '+code+'. Add it to the catalogue first.';return false}await cancelActiveIfNeeded();basket[p.id]=(basket[p.id]||0)+1;renderBasket();updatePaymentButton();$('scanResult').textContent='Added '+p.name+' · '+money(p.price);return true}
+  function productCode(raw){let s=String(raw||'').trim();try{const u=new URL(s);const q=u.searchParams.get('product');if(q)s=q}catch{}return s.replace(/^product:/i,'').trim()}
+  function askConfirmProduct(raw){const code=productCode(raw);const p=products.find(x=>x.active&&x.id.toLowerCase()===code.toLowerCase());if(!p){$('scanResult').textContent='Product not found for code: '+code+'. Add it to the catalogue first.';return}pendingProduct=p;$('confirmName').textContent=p.name;$('confirmId').textContent='Product ID: '+p.id;$('confirmPrice').textContent=money(p.price);$('confirmModal').classList.remove('hidden')}
+  function closeConfirm(){pendingProduct=null;$('confirmModal').classList.add('hidden')}
+  function renderBasket(){const items=basketItems();$('basket').innerHTML='';$('emptyBasket').classList.toggle('hidden',items.length>0);let total=0,count=0;items.forEach(i=>{const p=products.find(x=>x.active&&x.id===i.id);let q=i.qty,line=i.lineTotal;total+=line;count+=q;let d=document.createElement('div');d.className='basketline';d.innerHTML=`<div><div class="itemname">${esc(i.name)}</div><div class="sub">${esc(i.id)} · ${money(i.unitPrice)} each</div><div class="linecost">${money(line)}</div></div><div class="qtytools"><button class="btn" aria-label="Remove one">−</button><b>${q}</b><button class="btn" aria-label="Add one">+</button></div>`;let bs=d.querySelectorAll('button');bs[0].onclick=async()=>{await cancelActiveIfNeeded();basket[i.id]--;if(basket[i.id]<=0)delete basket[i.id];renderBasket();updatePaymentButton()};bs[1].onclick=()=>addByCode(i.id);$('basket').appendChild(d)});$('total').textContent=money(total);$('copyTotal').disabled=count===0;$('copyTotal').textContent='Copy total for SumUp · '+money(total)}
+  function renderProducts(){let term=$('search').value.trim().toLowerCase();let shown=products.filter(p=>p.active&&(p.id+' '+p.name).toLowerCase().includes(term));$('productGrid').innerHTML='';shown.slice(0,120).forEach(p=>{let b=document.createElement('button');b.className='product';b.innerHTML=`<span>${esc(p.id)}</span><strong>${esc(p.name)}</strong><b>${money(p.price)}</b><div class="sub">${p.stock_quantity<=p.low_stock_threshold?'⚠ Low stock · ':''}Stock: ${p.stock_quantity}</div>`;b.onclick=()=>addByCode(p.id);$('productGrid').appendChild(b)});$('catalogCount').textContent=`${products.filter(p=>p.active).length} active shared products · showing ${Math.min(shown.length,120)} matches`}
+  function renderInventory(){const active=products.filter(p=>p.active);$('inventoryProducts').textContent=String(active.length);$('inventoryUnits').textContent=String(active.reduce((n,p)=>n+p.stock_quantity,0));$('inventoryValue').textContent=money(active.reduce((n,p)=>n+p.cost_price*p.stock_quantity,0));const host=$('inventoryList');host.innerHTML='';if(!active.length){host.textContent='No active products.'}else active.slice().sort((a,b)=>(a.stock_quantity-a.low_stock_threshold)-(b.stock_quantity-b.low_stock_threshold)).forEach(p=>{const d=document.createElement('div');d.className='saleitem';const low=p.stock_quantity<=p.low_stock_threshold;d.innerHTML=`<div class="topline"><strong>${esc(p.name)}</strong><span class="chip">${low?'⚠ Low stock':'In stock'}</span></div><div class="muted tiny">${esc(p.id)} · ${p.stock_quantity} units · cost ${money(p.cost_price)} · sell ${money(p.price)}</div><div class="tiny" style="margin:5px 0">Stock value: <b>${money(p.cost_price*p.stock_quantity)}</b> · margin/unit: <b>${money(p.price-p.cost_price)}</b></div><div class="row" style="flex-wrap:wrap;margin-top:7px"><button class="btn" data-edit="${esc(p.id)}">Edit</button><button class="btn" data-adjust="${esc(p.id)}">Adjust stock</button><button class="btn danger" data-archive="${esc(p.id)}">Archive</button></div>`;host.appendChild(d)});host.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>editProduct(b.dataset.edit));host.querySelectorAll('[data-adjust]').forEach(b=>b.onclick=()=>adjustStock(b.dataset.adjust));host.querySelectorAll('[data-archive]').forEach(b=>b.onclick=()=>archiveProduct(b.dataset.archive));const archived=$('archivedList');archived.innerHTML='';const old=products.filter(p=>!p.active&&!p.permanently_deleted);if(!old.length){archived.textContent='No archived products.'}else old.forEach(p=>{const d=document.createElement('div');d.className='saleitem';d.innerHTML=`<div class="topline"><strong>${esc(p.name)}</strong><div class="row"><button class="btn" data-restore="${esc(p.id)}">Restore</button><button class="btn danger" data-purge="${esc(p.id)}">Permanently delete</button></div></div><div class="muted tiny">${esc(p.id)} · ${money(p.price)} · stock ${p.stock_quantity}</div>`;archived.appendChild(d)});archived.querySelectorAll('[data-restore]').forEach(b=>b.onclick=async()=>{try{await api('restore_product',{product_id:b.dataset.restore});await refreshProducts();alert('Product restored.')}catch(e){alert('Could not restore product: '+e.message)}});archived.querySelectorAll('[data-purge]').forEach(b=>b.onclick=()=>permanentlyDeleteProduct(b.dataset.purge))}
+  function editProduct(id){const p=products.find(x=>x.id===id);if(!p)return;$('editingProductId').value=p.id;$('newId').value=p.id;$('newId').disabled=true;$('newName').value=p.name;$('newPrice').value=p.price.toFixed(2);$('newCost').value=p.cost_price.toFixed(2);$('newStock').value=String(p.stock_quantity);$('newLowStock').value=String(p.low_stock_threshold);$('saveProduct').textContent='Update product';$('cancelEditProduct').classList.remove('hidden');$('newName').scrollIntoView({behavior:'smooth',block:'center'})}
+  function resetProductForm(){$('editingProductId').value='';$('newId').value='';$('newId').disabled=false;$('newName').value='';$('newPrice').value='';$('newCost').value='';$('newStock').value='';$('newLowStock').value='5';$('saveProduct').textContent='Save product';$('cancelEditProduct').classList.add('hidden')}
+  async function archiveProduct(id){const p=products.find(x=>x.id===id);if(!p||!confirm('Archive '+p.name+'? It will disappear from the till and QR label list, but historic sales will remain.'))return;try{await api('deactivate_product',{product_id:id});await refreshProducts();alert('Product archived.')}catch(e){alert('Could not archive product: '+e.message)}}
+  async function permanentlyDeleteProduct(id){const p=products.find(x=>x.id===id);if(!p)return;const ok=confirm('PERMANENTLY DELETE '+p.name+' ('+p.id+')? This cannot be undone. The product will be removed from inventory and its item-level profit entries will be excluded from recent sales details and future CSV exports. Overall order sales totals remain unchanged so historical takings stay accurate.');if(!ok)return;const second=prompt('To confirm permanent deletion, type DELETE');if(second!=='DELETE'){alert('Deletion cancelled.');return}try{await api('permanently_delete_product',{product_id:id});await Promise.all([refreshProducts(),refreshSales()]);alert('Product permanently removed from the POS and item-level profit reports.')}catch(e){alert('Could not permanently delete product: '+e.message)}}
+  async function adjustStock(id){const p=products.find(x=>x.id===id);if(!p)return;const raw=prompt('Stock adjustment for '+p.name+'\nEnter a positive number to add or a negative number to remove. Current stock: '+p.stock_quantity,'0');if(raw===null)return;const delta=Number(raw);if(!Number.isInteger(delta)||delta===0){alert('Enter a non-zero whole number.');return}const reason=prompt('Reason (delivery, damaged, stock count, etc.)','Manual adjustment')||'Manual adjustment';try{await api('adjust_stock',{product_id:id,delta,reason});await refreshProducts();alert('Stock updated.')}catch(e){alert('Could not adjust stock: '+e.message)}}
+  function localParts(value){const d=new Date(value);return {day:d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'),month:d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'),year:String(d.getFullYear())}}
+  function renderSales(){const now=localParts(new Date());const paid=sales.filter(o=>o.status==='paid');const total=pred=>paid.filter(o=>pred(localParts(o.paid_at||o.created_at))).reduce((n,o)=>n+Number(o.total),0);$('salesToday').textContent=money(total(d=>d.day===now.day));$('salesMonth').textContent=money(total(d=>d.month===now.month));$('salesYear').textContent=money(total(d=>d.year===now.year));const profit=paid.reduce((n,o)=>n+(o.order_items||[]).reduce((m,i)=>m+Number(i.line_total||0)-Number(i.unit_cost||0)*Number(i.quantity||0),0),0);$('salesProfit').textContent=money(profit);const host=$('salesHistory');host.innerHTML='';const orders=sales.slice().sort((a,b)=>new Date(b.created_at)-new Date(a.created_at)).slice(0,12);if(!orders.length){host.textContent='No orders recorded yet.';return}orders.forEach(o=>{const items=o.order_items||[];const d=document.createElement('div');d.className='saleitem';const date=new Date(o.created_at).toLocaleString('en-GB',{dateStyle:'short',timeStyle:'short'});d.innerHTML=`<div class="topline"><strong>${esc(String(o.id).slice(0,8))} · ${money(o.total)}</strong><span class="chip">${o.status==='paid'?'Paid':o.status==='cancelled'?'Cancelled':'Awaiting payment'}</span></div><div class="muted" style="margin:4px 0">${esc(date)} · ${items.reduce((n,i)=>n+Number(i.quantity),0)} item(s)</div><div>${items.map(i=>`${esc(i.product_name)} × ${i.quantity}`).join(', ')}</div>`;host.appendChild(d)})}
+  async function refreshProducts(){const r=await api('list_products');products=(r.products||[]).map(p=>({id:p.id,name:p.name,price:Number(p.price),cost_price:Number(p.cost_price||0),stock_quantity:Number(p.stock_quantity||0),low_stock_threshold:Number(p.low_stock_threshold||0),active:p.active!==false,permanently_deleted:p.permanently_deleted===true})).filter(p=>!p.permanently_deleted);renderProducts();renderBasket();renderInventory()}
+  async function refreshSales(){const r=await api('sales_report');sales=r.orders||[];renderSales()}
+  async function refreshAll(){try{await Promise.all([refreshProducts(),refreshSales()]);$('salesStatus').textContent='Connected to shared Barn Kennel Farm records.'}catch(e){$('salesStatus').textContent='Could not load shared data: '+e.message;throw e}}
+  function updatePaymentButton(){const show=!!activeOrderId;$('markPaid').classList.toggle('hidden',!show);}
+  async function markOrderPaid(id){if(!id)return;if(!confirm('Only continue if SumUp confirms this payment was successful. Mark this order as paid?'))return;$('markPaid').disabled=true;try{await api('mark_paid',{order_id:id});activeOrderId=null;activeSignature='';basket={};renderBasket();updatePaymentButton();$('copyStatus').textContent='Payment marked as paid. The shared sales records have been updated.';await refreshSales()}catch(e){alert('Could not mark order paid: '+e.message)}finally{$('markPaid').disabled=false}}
+  $('search').addEventListener('input',renderProducts);
+  $('addCode').onclick=()=>{addByCode($('manualCode').value).then(ok=>{if(ok)$('manualCode').value=''})};
+  $('confirmScanProduct').onclick=async()=>{if(pendingProduct){const p=pendingProduct;closeConfirm();await addByCode(p.id);$('scanResult').textContent='Confirmed and added '+p.name+' · '+money(p.price)}};
+  $('cancelScanProduct').onclick=()=>{closeConfirm();$('scanResult').textContent='Scan cancelled. No item was added.'};
+  $('confirmModal').addEventListener('click',e=>{if(e.target===$('confirmModal'))$('cancelScanProduct').click()});
+  $('manualCode').addEventListener('keydown',e=>{if(e.key==='Enter')$('addCode').click()});
+  $('clearBasket').onclick=async()=>{if(Object.keys(basket).length&&!confirm('Clear this basket?'))return;await cancelActiveIfNeeded();basket={};renderBasket();updatePaymentButton()};
+  $('copyTotal').onclick=async()=>{const items=basketItems();if(!items.length)return;const signature=basketSignature();let orderId=activeOrderId;if(!orderId||activeSignature!==signature){try{const result=await api('create_order',{items:items.map(i=>({product_id:i.id,quantity:i.qty}))});orderId=result.order.id;activeOrderId=orderId;activeSignature=signature;$('copyStatus').textContent='Order saved to shared records as awaiting payment.'}catch(e){$('copyStatus').textContent='Could not save order: '+e.message;return}}
+    const total=Math.round(items.reduce((n,i)=>n+i.lineTotal,0)*100)/100;try{await navigator.clipboard.writeText(money(total));$('copyStatus').textContent=money(total)+' copied. Order '+String(orderId).slice(0,8)+' is awaiting payment. Open SumUp and enter this amount.'}catch{$('copyStatus').textContent='Order '+String(orderId).slice(0,8)+' saved. Enter '+money(total)+' manually in SumUp.'}updatePaymentButton();await refreshSales()};
+  $('markPaid').onclick=()=>markOrderPaid(activeOrderId);
+  $('exportSales').onclick=async()=>{try{await refreshSales();if(!sales.length){$('salesStatus').textContent='No orders to export yet.';return}const quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';let rows=[['Order ID','Created at','Paid at','Status','Product ID','Product name','Quantity','Unit price GBP','Unit cost GBP','Line total GBP','Estimated item cost GBP','Estimated item profit GBP','Order total GBP']];sales.forEach(o=>(o.order_items||[]).forEach(i=>rows.push([o.id,new Date(o.created_at).toLocaleString('en-GB'),o.paid_at?new Date(o.paid_at).toLocaleString('en-GB'):'',o.status,i.product_id,i.product_name,i.quantity,Number(i.unit_price).toFixed(2),Number(i.unit_cost||0).toFixed(2),Number(i.line_total).toFixed(2),(Number(i.unit_cost||0)*Number(i.quantity)).toFixed(2),(Number(i.line_total)-Number(i.unit_cost||0)*Number(i.quantity)).toFixed(2),Number(o.total).toFixed(2)])));const csv=rows.map(r=>r.map(quote).join(',')).join('\r\n');download('the-barn-kennel-farm-sales-'+new Date().toISOString().slice(0,10)+'.csv','\ufeff'+csv,'text/csv;charset=utf-8');$('salesStatus').textContent='Exported shared sales records.'}catch(e){$('salesStatus').textContent='Export failed: '+e.message}};
+  $('saveProduct').onclick=async()=>{let id=$('newId').value.trim(),name=$('newName').value.trim(),price=Number($('newPrice').value),cost=Number($('newCost').value||0),stock=Number($('newStock').value||0),low=Number($('newLowStock').value||0),editing=!!$('editingProductId').value;if(!id||!name||!Number.isFinite(price)||price<0||!Number.isFinite(cost)||cost<0||!Number.isInteger(stock)||stock<0||!Number.isInteger(low)||low<0){alert('Enter a product ID, name, valid selling and cost prices, and whole-number stock quantities.');return}try{await api('save_product',{product:{id,name,price:Math.round(price*100)/100,cost_price:Math.round(cost*100)/100,stock_quantity:stock,low_stock_threshold:low}});await refreshProducts();resetProductForm();alert(editing?'Product updated in the shared catalogue.':'Product saved to the shared catalogue.')}catch(e){alert('Could not save product: '+e.message)}};
+  $('cancelEditProduct').onclick=resetProductForm;
+  $('downloadTemplate').onclick=()=>{const csv='id,name,price,cost_price,stock_quantity,low_stock_threshold\\nITEM001,"Example product",1.50,0.60,20,5\\n';download('products-template.csv',csv,'text/csv')};
+  $('csvFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const rows=parseCSV(await f.text());if(rows.length<2)throw Error('CSV must include a header and at least one product.');const head=rows[0].map(x=>x.trim().toLowerCase());const ii=head.indexOf('id'),ni=head.indexOf('name'),pi=head.indexOf('price'),ci=head.indexOf('cost_price'),si=head.indexOf('stock_quantity'),li=head.indexOf('low_stock_threshold');if(ii<0||ni<0||pi<0)throw Error('Headers must include id,name,price.');const next=rows.slice(1).filter(r=>r.length&&r[ii]&&r[ni]).map(r=>({id:r[ii].trim(),name:r[ni].trim(),price:Number(r[pi]),cost_price:ci<0?0:Number(r[ci]||0),stock_quantity:si<0?0:Number(r[si]||0),low_stock_threshold:li<0?5:Number(r[li]||0)}));if(next.some(p=>!Number.isFinite(p.price)||p.price<0||!Number.isFinite(p.cost_price)||p.cost_price<0||!Number.isInteger(p.stock_quantity)||p.stock_quantity<0||!Number.isInteger(p.low_stock_threshold)||p.low_stock_threshold<0))throw Error('One or more price or stock values are invalid.');if(new Set(next.map(p=>p.id.toLowerCase())).size!==next.length)throw Error('Duplicate product IDs found.');if(!confirm('Import/update '+next.length+' products? Existing products not in the CSV will be archived; current stock for included products will be set to the CSV quantities.'))return;const old=[...products];for(const p of next)await api('save_product',{product:p});const newIds=new Set(next.map(p=>p.id));for(const p of old)if(!newIds.has(p.id)&&p.active)await api('deactivate_product',{product_id:p.id});await refreshProducts();alert('Shared catalogue updated with '+next.length+' products.')}catch(err){alert('Import failed: '+err.message)}e.target.value=''};
+  function parseCSV(text){let rows=[],row=[],field='',quoted=false;for(let i=0;i<text.length;i++){let c=text[i];if(c==='"'&&quoted&&text[i+1]==='"'){field+='"';i++}else if(c==='"'){quoted=!quoted}else if(c===','&&!quoted){row.push(field);field=''}else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&text[i+1]==='\n')i++;row.push(field);if(row.some(x=>x.trim()))rows.push(row);row=[];field=''}else field+=c}row.push(field);if(row.some(x=>x.trim()))rows.push(row);return rows}
+  function download(name,content,type){const a=document.createElement('a'),url=URL.createObjectURL(new Blob([content],{type}));a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+  $('startScan').onclick=async()=>{if(!window.Html5Qrcode){$('scanStatus').textContent='Scanner library did not load. Check internet connection and reload.';return}try{$('scannerWrap').classList.remove('hidden');$('startScan').disabled=true;scanner=new Html5Qrcode('reader');await scanner.start({facingMode:'environment'},{fps:10,qrbox:{width:230,height:230}},decoded=>{let now=Date.now();if(pendingProduct)return;if(decoded===lastScan&&now-lastScanAt<1600)return;lastScan=decoded;lastScanAt=now;askConfirmProduct(decoded);navigator.vibrate?.(70)},()=>{});$('scanStatus').textContent='Camera on. Point it at a product QR code.'}catch(err){$('scanStatus').textContent='Could not start camera: '+err+'. Use Safari over HTTPS and allow camera access.';$('scannerWrap').classList.add('hidden');$('startScan').disabled=false}};
+  async function stopScanner(){if(scanner){try{await scanner.stop();scanner.clear()}catch{}scanner=null}$('scannerWrap').classList.add('hidden');$('startScan').disabled=false;$('scanStatus').textContent='Camera is off.'}
+  $('stopScan').onclick=stopScanner;
+  $('makeLabels').onclick=()=>{if(!window.QRCode){alert('QR generator library did not load. Check your internet connection.');return}$('labels').innerHTML='';$('labelsCard').classList.remove('hidden');products.filter(p=>p.active).forEach(p=>{let d=document.createElement('div');d.className='qrlabel';let q=document.createElement('div');q.style.display='flex';q.style.justifyContent='center';d.appendChild(q);new QRCode(q,{text:p.id,width:150,height:150,correctLevel:QRCode.CorrectLevel.M});let title=document.createElement('strong');title.textContent=p.name;d.appendChild(title);let sub=document.createElement('small');sub.textContent=p.id+' · '+money(p.price);d.appendChild(sub);$('labels').appendChild(d)})};
+  $('printLabels').onclick=()=>window.print();$('hideLabels').onclick=()=>$('labelsCard').classList.add('hidden');
+  // Do not store the auth token or PIN on the device. Unlock again after refreshing.
+  const urlProduct=new URLSearchParams(location.search).get('product');if(urlProduct){$('manualCode').value=urlProduct}
+})();
+</script>
+</body></html>
